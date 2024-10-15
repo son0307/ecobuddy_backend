@@ -36,8 +36,7 @@ jobs:
     - name: web docker build and push
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker build -t ${{ secrets.DOCKER_REPO }}/eco-buddy
-        docker push ${{ secrets.DOCKER_REPO }}/eco-buddy
+        docker buildx build --push &{{ secrets.DOCKER_REPO }}/eco-buddy
 
   deploy:
     # needs를 통해 build job이 수행 성공시에 작업되도록 설정
